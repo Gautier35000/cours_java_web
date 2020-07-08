@@ -10,23 +10,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1>Veuillez vous authentifier</h1>
-<h2><%= new Date() %>
-</h2>
-<p><%= session.getAttribute("message")%></p>
+<div class="container col-6">
+    <h1>Veuillez vous authentifier</h1>
+    <h2><%= new Date() %>
+    </h2>
+    <p class="message"><%= session.getAttribute("message")%>
+    </p>
 
-<form method="post" action="login">
-    <label for="login"> Login: </label>
-    <input type="text" name="login" id="login" value="<%= session.getAttribute("login")%>" autofocus>
-    <br>
-    <label for="password"> Password: </label>
-    <input type="password" id="password" name="password" value="<%= session.getAttribute("password")%>">
-    <input type="submit" value="Valider" >
-</form>
+    <form method="post" action="login">
+        <div class="form-group ">
+            <label for="login"> Login: </label>
 
-
-
+            <input type="text" class="form-control" name="login" id="login" value="<%= session.getAttribute("login")%>"
+                   autofocus>
+            <br>
+            <label for="password"> Password: </label>
+            <input type="password" class="form-control" id="password" name="password"
+                   value="<%= session.getAttribute("password")%>">
+            <br>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Calendar;
 
 public class LoginServlet extends HttpServlet {
     @Override
@@ -17,6 +18,7 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = req.getSession(true);
         session.setAttribute("login", login);
         session.setAttribute("password", password);
+        session.setAttribute("message","");
         req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
 
@@ -28,12 +30,16 @@ public class LoginServlet extends HttpServlet {
         session.setAttribute("login", login);
         session.setAttribute("password", password);
         if (login.equals("toto") && password.equals("1234")) {
+            Calendar date= Calendar.getInstance();
+            String heure=date.get(Calendar.HOUR_OF_DAY)+":"+date.get(Calendar.MINUTE);
 
+            session.setAttribute("heure",heure);
             req.getRequestDispatcher("/connected.jsp").forward(req, resp);
             session.setAttribute("isConnected",true);
         } else {
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
             session.setAttribute("isConnected",false);
+            session.setAttribute("message","Erreur sur la saisie du login ou du mdp");
         }
     }
 }

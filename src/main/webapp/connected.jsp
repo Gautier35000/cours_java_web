@@ -12,6 +12,10 @@
 </head>
 <body>
 <h1>Welcome <%= session.getAttribute("login")%></h1>
+<h2>La connexion à été établi le <%= session.getAttribute("heure")%> </h2>
+<form method="post" action="disconnects">
+<input type="submit" value="Déconnexion">
+</form>
 
 </body>
 </html>

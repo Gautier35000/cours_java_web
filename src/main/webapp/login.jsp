@@ -15,6 +15,7 @@
 <h1>Veuillez vous authentifier</h1>
 <h2><%= new Date() %>
 </h2>
+<p><%= session.getAttribute("message")%></p>
 
 <form method="post" action="login">
     <label for="login"> Login: </label>
